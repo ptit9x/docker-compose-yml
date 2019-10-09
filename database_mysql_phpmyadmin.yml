@@ -1,0 +1,32 @@
+version: '3'
+
+# Dang Error maria db
+services:
+  mysql:
+    container_name: db_mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: abcd1234
+      MYSQL_USER: huynhdn
+      MYSQL_PASSWORD: abc123
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    # user: "1000:1000"
+    ports:
+      - "3306:3306"
+    restart: on-failure
+    networks:
+      - common
+  phpmyadmin:
+    container_name: tool_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    restart: on-failure
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: abcd1234
+    networks:
+      - common
+networks:
+    common:

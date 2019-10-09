@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mongo:
+    container_name: db_mongo
+    image: mongo
+    volumes:
+      - ./data/mongo:/data/db
+    user: "1000:1000"
+    ports:
+      - "27017:27017"
+    networks:
+      - common
+    restart: on-failure
+networks:
+    common:

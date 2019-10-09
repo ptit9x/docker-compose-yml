@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  redis:
+    container_name: redis
+    image: redis:alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+        - ./data/redis:/data
+    user: "${UID_GID}"
+    ports:
+        - "6379:6379"
+    networks:
+        - common
+    restart: always
+networks:
+    common:

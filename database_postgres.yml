@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: db_postgresql
+    image: postgres
+    volumes:
+      - ./data/postgres:/data/db
+    user: "1000:1000"
+    ports:
+      - "5432:5432"
+    networks:
+      - common
+    restart: always
+networks:
+    common:

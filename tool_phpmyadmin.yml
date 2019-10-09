@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  phpmyadmin:
+    container_name: tool_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '8080:80'
+    environment:
+      MYSQL_ROOT_PASSWORD: abcd1234
+      MYSQL_USER: huynhdn
+      MYSQL_PASSWORD: abc123
+      PMA_HOST: mariadb
+    networks:
+      - common
+    restart: always
+networks:
+    common:
