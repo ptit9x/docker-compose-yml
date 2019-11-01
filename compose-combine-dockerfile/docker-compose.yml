@@ -1,0 +1,22 @@
+version: '3'
+services:
+  fe:
+    container_name: 'cit'
+    hostname: 'cit'
+    image: 'cit:1.0.0'
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      my-network:
+        aliases:
+          - cit.local
+    expose:
+      - 80
+      - 443
+    ports:
+      - 8000:80
+
+networks:
+  my-network:

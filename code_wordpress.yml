@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  # Wordpress
+  wordpress:
+    container_name: wordpress
+    external_links:
+      - db_mysql
+    image: wordpress:latest
+    ports:
+      - '8000:80'
+    restart: always
+    volumes: ['/var/www/html/wordpress:/var/www/html']
+    environment:
+      # WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: huynhdn
+      WORDPRESS_DB_PASSWORD: abc123
+      WORDPRESS_DB_NAME: wordpress_db
+    networks:
+      - common
+networks:
+  common:
